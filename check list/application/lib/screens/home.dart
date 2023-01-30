@@ -1,4 +1,5 @@
 import 'package:application/constants/colours.dart';
+import 'package:application/widgets/to_do_item.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -19,7 +20,11 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             _searchBar(),
-            _listView()
+            _listView(),
+            ToDoItems(),
+            ToDoItems(),
+            ToDoItems(),
+            ToDoItems()
             ],
         ),
       ),
@@ -68,7 +73,8 @@ class _HomeState extends State<Home> {
           hintText: 'search',
         ),
       ),
-    ));
+    )
+    );
   }
 
   Widget _listView() {
