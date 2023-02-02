@@ -1,4 +1,5 @@
 import 'package:application/constants/colours.dart';
+import 'package:application/models/ToDo.dart';
 import 'package:application/widgets/to_do_item.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final toDoList = ToDO.TodoList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,20 +20,15 @@ class _HomeState extends State<Home> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Column(
-          children: [
-            _searchBar(),
-            _listView(),
-            ToDoItems(),
-            ToDoItems(),
-            ToDoItems(),
-            ToDoItems()
+          children: [_searchBar(),
+           _listView(),
+            for (ToDO todo in toDoList)
+            ToDoItems(todo: todo)
             ],
         ),
       ),
     );
   }
-
-
 
   AppBar _buildAppBar() {
     return (AppBar(
@@ -57,8 +54,6 @@ class _HomeState extends State<Home> {
         )));
   }
 
-
-
   Widget _searchBar() {
     return (Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -73,27 +68,22 @@ class _HomeState extends State<Home> {
           hintText: 'search',
         ),
       ),
-    )
-    );
+    ));
   }
 
   Widget _listView() {
-    return(Expanded(child: ListView(
-              children: [
-                 Container(
-                   margin: const EdgeInsets.only(
-                     top: 50,
-                     bottom: 20
-                   ),
-                   child: const Text("Tasks to comlpete",
-                   style: TextStyle(
-                     fontWeight: FontWeight.w500,
-                     fontSize: 30,
-                   )
-                   ),
-                 )
-              ],
-            )
-            ));
+    return (Expanded(
+        child: ListView(
+      children: [
+        Container(
+          margin: const EdgeInsets.only(top: 50, bottom: 20),
+          child: const Text("Tasks to comlpete",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 30,
+              )),
+        )
+      ],
+    )));
   }
 }
