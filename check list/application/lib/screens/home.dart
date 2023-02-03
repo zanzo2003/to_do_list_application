@@ -1,6 +1,6 @@
 import 'package:application/constants/colours.dart';
 import 'package:application/models/ToDo.dart';
-import 'package:application/widgets/to_do_item.dart';
+import 'package:application/to_do_item.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
