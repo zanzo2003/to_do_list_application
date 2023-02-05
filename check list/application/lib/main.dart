@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import '../screens/home.dart';
+import 'package:flutter/services.dart';
+import './screens/home.dart';
 
 void main() {
-  return (runApp(const MyApp()));
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({ Key? key }) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "ToDo App",
+      title: 'ToDo App',
       home: Home(),
     );
   }
